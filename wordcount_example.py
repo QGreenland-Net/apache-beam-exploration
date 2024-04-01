@@ -19,6 +19,8 @@ beam_options = PipelineOptions(
     runner='DirectRunner',
     project='wordcount',
     job_name='unique_wordcount_job_name',
+    # This doesn't appear to be created. Maybe not used by any of our PTransform
+    # steps.
     temp_location='./words-tmp',
 )
 
