@@ -9,8 +9,10 @@ import apache_beam as beam
 
 
 
-input_file = 'words.txt'
-output_path = 'wordcounts.txt'
+output_dir = 'data'
+# TODO: Will Beam accept pathlib.Paths?
+input_file = f'{output_dir}/words.txt'
+output_path = f'{output_dir}/wordcounts.txt'
 
 
 class WordCountOptions(PipelineOptions):
