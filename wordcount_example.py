@@ -12,10 +12,19 @@ import apache_beam as beam
 input_file = 'words.txt'
 output_path = 'wordcounts.txt'
 
+
+class WordCountOptions(PipelineOptions):
+    """Accept runtime Pipeline options."""
+    @classmethod
+    def _add_argparse_args(cls, parser):
+        parser.add_argument('--input', dest='input', help='File to read in')
+        parser.add_argument('--output', dest='output', help='File to write out')
+
+
 # This object lets us set various options for our pipeline, such as the pipeline
 # runner that will execute our pipeline and any runner-specific configuration
 # required by the chosen runner.
-beam_options = PipelineOptions(
+pipeline_options = WordCountOptions(
     runner='DirectRunner',
     project='wordcount',
     job_name='unique_wordcount_job_name',
@@ -26,8 +35,7 @@ beam_options = PipelineOptions(
 
 # The Pipeline object builds up the graph of transformations to be executed,
 # associated with that particular pipeline.
-with beam.Pipeline(options=beam_options) as p:
-
+with beam.Pipeline(options=pipeline_options) as p:
     (p
     # A text file Read transform is applied to the Pipeline object itself, and
     # produces a PCollection as output. Each element in the output PCollection

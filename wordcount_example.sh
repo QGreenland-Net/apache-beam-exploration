@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python -m apache_beam.examples.wordcount_minimal --input words.txt --output wordcounts.txt
+python -m wordcount_example --input data/words.txt --output data/wordcounts.txt
