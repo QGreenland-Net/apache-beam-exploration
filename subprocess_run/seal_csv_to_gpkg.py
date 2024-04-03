@@ -26,12 +26,9 @@ beam_options = PipelineOptions(
     temp_location='./seal_tags-tmp',
 )
 
-def csv_to_gpkg_with_ogr2ogr(pcoll):
-    # The pcoll is a Path to a local file.
-    input_file = pcoll
-
+def run_cmd(cmd_str: str) -> None:
     result = subprocess.run(
-        f"ogr2ogr -a_srs 'EPSG:4326' -oo X_POSSIBLE_NAMES=Longitude -oo Y_POSSIBLE_NAMES=Latitude {OUTPUT_PATH} {input_file}",
+        cmd_str,
         shell=True,
         executable="/bin/bash",
         capture_output=True,
@@ -45,7 +42,17 @@ def csv_to_gpkg_with_ogr2ogr(pcoll):
             f"Subprocess failed with output:\n\n{output}",
         )
 
+
+def csv_to_gpkg_with_ogr2ogr(pcoll):
+    # The pcoll is a Path to a local file.
+    input_file = pcoll
+
+    run_cmd(
+        f"ogr2ogr -a_srs 'EPSG:4326' -oo X_POSSIBLE_NAMES=Longitude -oo Y_POSSIBLE_NAMES=Latitude {OUTPUT_PATH} {input_file}"
+    )
+
     return OUTPUT_PATH
+
 
 @dataclass
 class WriteGpkg(beam.PTransform):
