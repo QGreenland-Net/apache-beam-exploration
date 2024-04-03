@@ -8,8 +8,11 @@ import apache_beam as beam
 
 
 INPUT_URL = "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A31162eb9-7e3b-4b88-948f-f4c99f13a83f"
-OUTPUT_PATH = "data/foo.gpkg"
+OUTPUT_DIR = Path("./data/")
+OUTPUT_DIR.mkdir(exist_ok=True)
 CACHE_DIR = Path("./cache/")
+CACHE_DIR.mkdir(exist_ok=True)
+OUTPUT_PATH = OUTPUT_DIR / "seal_tag_data.gpkg"
 
 # This object lets us set various options for our pipeline, such as the pipeline
 # runner that will execute our pipeline and any runner-specific configuration
