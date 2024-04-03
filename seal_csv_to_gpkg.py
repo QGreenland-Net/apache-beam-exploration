@@ -6,7 +6,7 @@ import apache_beam as beam
 
 
 INPUT_URL = "https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A31162eb9-7e3b-4b88-948f-f4c99f13a83f"
-OUTPUT_PATH = "foo.gpkg"
+OUTPUT_PATH = "data/foo.gpkg"
 
 # This object lets us set various options for our pipeline, such as the pipeline
 # runner that will execute our pipeline and any runner-specific configuration

@@ -1,3 +1,2 @@
-words.txt
-wordcounts*
-*.gpkg
+/data/
+__pycache__/
