@@ -1,6 +1,9 @@
 # apache-beam-exploration
 
-Repo for exploring the use of [Apache Beam](https://beam.apache.org/).
+This repository has been archived.
+
+Repo for exploring the use of [Apache Beam](https://beam.apache.org/) as the
+orchestrator for OGDC recipes.
 
 Repo currently focuses on following along with the beam "getting started"
 materials: https://beam.apache.org/get-started/
